@@ -9,6 +9,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <!-- Stars background -->
+    <canvas id="starsCanvas"></canvas>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__inner">
+            <div class="preloader__logo">{VDM}</div>
+            <div class="preloader__bar"><div class="preloader__fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Section navigation dots -->
+    <nav class="section-dots" id="sectionDots">
+        <a href="#hero" class="section-dots__dot active" data-section="hero"></a>
+        <a href="#about" class="section-dots__dot" data-section="about"></a>
+        <a href="#journey" class="section-dots__dot" data-section="journey"></a>
+        <a href="#projects" class="section-dots__dot" data-section="projects"></a>
+        <a href="#skills" class="section-dots__dot" data-section="skills"></a>
+        <a href="#blog" class="section-dots__dot" data-section="blog"></a>
+        <a href="#contact" class="section-dots__dot" data-section="contact"></a>
+    </nav>
+
     <!-- Cursor system -->
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="cursor" id="cursor">
@@ -24,19 +46,32 @@
                 <span class="nav__logo-bracket">{</span>Vo Duc Manh<span class="nav__logo-bracket">}</span>
             </a>
             <div class="nav__links" id="navLinks">
-                <a href="#about" class="nav__link" data-section="about">About</a>
-                <a href="#journey" class="nav__link" data-section="journey">Journey</a>
-                <a href="#projects" class="nav__link" data-section="projects">Case Studies</a>
-                <a href="#skills" class="nav__link" data-section="skills">Skills</a>
-                <a href="#blog" class="nav__link" data-section="blog">Blog</a>
-                <a href="#contact" class="nav__link" data-section="contact">Contact</a>
+                <a href="#about" class="nav__link" data-section="about" data-i18n="nav.about">About</a>
+                <a href="#journey" class="nav__link" data-section="journey" data-i18n="nav.journey">Journey</a>
+                <a href="#projects" class="nav__link" data-section="projects" data-i18n="nav.projects">Case Studies</a>
+                <a href="#skills" class="nav__link" data-section="skills" data-i18n="nav.skills">Skills</a>
+                <a href="#blog" class="nav__link" data-section="blog" data-i18n="nav.blog">Blog</a>
+                <a href="#contact" class="nav__link" data-section="contact" data-i18n="nav.contact">Contact</a>
             </div>
             <div class="nav__actions">
+                <div class="music-control" id="musicControl">
+                    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+                        <i class="fas fa-volume-xmark music-toggle__icon music-toggle__icon--off"></i>
+                        <i class="fas fa-volume-high music-toggle__icon music-toggle__icon--on"></i>
+                    </button>
+                    <div class="music-control__slider">
+                        <input type="range" id="musicVolume" min="0" max="100" value="70" class="music-volume">
+                    </div>
+                </div>
+                <div class="lang-switch" id="langSwitch">
+                    <button class="lang-switch__btn" data-lang="vi">VI</button>
+                    <button class="lang-switch__btn active" data-lang="en">EN</button>
+                </div>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--light"></i>
                     <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--dark"></i>
                 </button>
-                <a href="#resume" class="nav__cta">Download CV</a>
+                <a href="#resume" class="nav__cta" data-i18n="nav.cv">Download CV</a>
                 <button class="nav__menu-btn" id="menuBtn" aria-label="Menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path class="menu-line menu-line--top" d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -55,39 +90,41 @@
         <div class="hero__content">
             <div class="hero__badge">
                 <span class="hero__badge-dot"></span>
-                Available for opportunities
+                <span data-i18n="hero.badge">Available for opportunities</span>
             </div>
             <h1 class="hero__title hero__title-line">
                 I transform
                 <span class="hero__title-line--accent"><span class="hero__title-word" id="rotatingWord">raw data</span></span>
                 into business impact.
             </h1>
-            <p class="hero__subtitle">
+            <p class="hero__subtitle" data-i18n="hero.subtitle">
                 Data Analyst & ML Engineer building predictive models and interactive dashboards
                 that drive real decisions. Based in Hanoi, Vietnam.
             </p>
             <div class="hero__metrics">
                 <div class="hero__metric">
                     <span class="hero__metric-value" data-count="3">0</span>
-                    <span class="hero__metric-label">Projects Shipped</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric1">Projects Shipped</span>
                 </div>
                 <div class="hero__metric">
                     <span class="hero__metric-value" data-count="371" data-suffix="M+">0</span>
-                    <span class="hero__metric-label">$ Data Analyzed</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric2">$ Data Analyzed</span>
                 </div>
                 <div class="hero__metric">
                     <span class="hero__metric-value" data-count="15" data-suffix="K+">0</span>
-                    <span class="hero__metric-label">Records Processed</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric3">Records Processed</span>
                 </div>
             </div>
             <div class="hero__socials">
                 <a href="mailto:vomanh6a@gmail.com" aria-label="Email" data-tooltip="vomanh6a@gmail.com" data-cursor="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.linkedin.com/in/v%C3%B5-m%E1%BA%A1nh-981369360/" target="_blank" aria-label="LinkedIn" data-tooltip="LinkedIn" data-cursor="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/gorgeousgangster" target="_blank" aria-label="GitHub" data-tooltip="GitHub" data-cursor="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/_098.majnh/" target="_blank" aria-label="Instagram" data-tooltip="Instagram" data-cursor="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" aria-label="Facebook" data-tooltip="Facebook" data-cursor="Facebook"><i class="fab fa-facebook"></i></a>
             </div>
             <div class="hero__scroll-indicator">
                 <div class="hero__scroll-line"></div>
-                <span>Scroll to explore</span>
+                <span data-i18n="hero.scroll">Scroll to explore</span>
             </div>
         </div>
         <div class="hero__visual">
@@ -99,21 +136,32 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">01 / About</span>
-                <h2 class="section-header__title">The intersection of<br><em>economics</em> & <em>technology</em></h2>
+                <span class="section-header__tag" data-i18n="about.tag">01 / About</span>
+                <h2 class="section-header__title" data-i18n="about.title" data-i18n-html="1">The intersection of<br><em>economics</em> & <em>technology</em></h2>
             </div>
             <div class="about__layout">
+                <div class="photo-stack" id="photoStack">
+                    <div class="photo-stack__card" data-index="0">
+                        <img src="assets/images/portrait.webp" alt="Portrait" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                    <div class="photo-stack__card" data-index="1">
+                        <img src="assets/images/beach.webp" alt="Beach" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                    <div class="photo-stack__card" data-index="2">
+                        <img src="assets/images/group-suits.webp" alt="Group" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                </div>
                 <div class="about__narrative">
-                    <p class="about__lead">
+                    <p class="about__lead" data-i18n="about.lead">
                         I don't just analyze numbers — I uncover the stories they tell and translate
                         them into strategic decisions.
                     </p>
-                    <p>
+                    <p data-i18n="about.p1" data-i18n-html="1">
                         With a foundation in <strong>Computer Science</strong> from Vinh Gifted High School
                         (GPA 9.3/10) and currently studying <strong>International Economics</strong> at
                         Foreign Trade University, I bring a rare blend of technical depth and business acumen.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         My approach combines rigorous statistical methods with clear visual storytelling —
                         because insights that can't be communicated are insights wasted.
                     </p>
@@ -152,8 +200,8 @@
     <section class="journey" id="journey">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">02 / Journey</span>
-                <h2 class="section-header__title">A timeline of<br><em>growth</em> & <em>milestones</em></h2>
+                <span class="section-header__tag" data-i18n="journey.tag">02 / Journey</span>
+                <h2 class="section-header__title" data-i18n="journey.title" data-i18n-html="1">A timeline of<br><em>growth</em> & <em>milestones</em></h2>
             </div>
             <div class="timeline">
                 <div class="timeline__line">
@@ -224,8 +272,8 @@
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">03 / Case Studies</span>
-                <h2 class="section-header__title">Deep dives into<br><em>real</em> problems solved</h2>
+                <span class="section-header__tag" data-i18n="projects.tag">03 / Case Studies</span>
+                <h2 class="section-header__title" data-i18n="projects.title" data-i18n-html="1">Deep dives into<br><em>real</em> problems solved</h2>
             </div>
             <div class="cases">
                 <!-- Case 1 -->
@@ -349,8 +397,8 @@
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">04 / Skills</span>
-                <h2 class="section-header__title">Tools & technologies<br>I <em>work with</em></h2>
+                <span class="section-header__tag" data-i18n="skills.tag">04 / Skills</span>
+                <h2 class="section-header__title" data-i18n="skills.title" data-i18n-html="1">Tools & technologies<br>I <em>work with</em></h2>
             </div>
             <div class="skills__radar">
                 <div class="skills__chart">
@@ -414,8 +462,8 @@
     <section class="blog" id="blog">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">05 / Blog</span>
-                <h2 class="section-header__title">Insights from<br><em>real</em> projects</h2>
+                <span class="section-header__tag" data-i18n="blog.tag">05 / Blog</span>
+                <h2 class="section-header__title" data-i18n="blog.title" data-i18n-html="1">Insights from<br><em>real</em> projects</h2>
             </div>
             <div class="blog__grid">
                 <article class="blog-card blog-card--featured" data-article="car-sales">
@@ -655,8 +703,8 @@
     <section class="resume" id="resume">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">06 / Resume</span>
-                <h2 class="section-header__title">Interactive <em>CV</em></h2>
+                <span class="section-header__tag" data-i18n="resume.tag">06 / Resume</span>
+                <h2 class="section-header__title" data-i18n="resume.title" data-i18n-html="1">Interactive <em>CV</em></h2>
             </div>
             <div class="resume__layout">
                 <div class="resume__preview">
@@ -718,8 +766,8 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">07 / Contact</span>
-                <h2 class="section-header__title">Let's build<br>something <em>together</em></h2>
+                <span class="section-header__tag" data-i18n="contact.tag">07 / Contact</span>
+                <h2 class="section-header__title" data-i18n="contact.title" data-i18n-html="1">Let's build<br>something <em>together</em></h2>
             </div>
             <div class="contact__layout">
                 <div class="contact__info">
@@ -757,6 +805,22 @@
                             <div class="contact__channel-info">
                                 <span class="contact__channel-label">LinkedIn</span>
                                 <span class="contact__channel-value">Connect with me</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_098.majnh/" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-instagram"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Instagram</span>
+                                <span class="contact__channel-value">@_098.majnh</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-facebook"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Facebook</span>
+                                <span class="contact__channel-value">Vo Duc Manh</span>
                             </div>
                             <i class="fas fa-arrow-right contact__channel-arrow"></i>
                         </a>
@@ -817,6 +881,12 @@
         </a>
         <a href="https://www.linkedin.com/in/v%C3%B5-m%E1%BA%A1nh-981369360/" target="_blank" class="fab-menu__btn" data-tooltip="LinkedIn" style="background:var(--bg-3);">
             <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/_098.majnh/" target="_blank" class="fab-menu__btn" data-tooltip="Instagram" style="background:var(--bg-3);">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" class="fab-menu__btn" data-tooltip="Facebook" style="background:var(--bg-3);">
+            <i class="fab fa-facebook"></i>
         </a>
         <button class="fab-menu__trigger" id="fabTrigger" aria-label="Quick actions">
             <i class="fas fa-plus"></i>

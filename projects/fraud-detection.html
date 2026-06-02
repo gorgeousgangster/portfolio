@@ -36,6 +36,10 @@
     </style>
 </head>
 <body>
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
     <nav class="nav nav--scrolled">
         <div class="nav__inner">
             <a href="../index.html" class="nav__logo">
@@ -142,10 +146,22 @@
 
                 <div class="case-study__nav">
                     <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> All Projects</a>
-                    <a href="#">Next: Car Dealership Analysis <i class="fas fa-arrow-right"></i></a>
+                    <a href="car-dealership.html">Next: Car Dealership Analysis <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </main>
+    <script>
+        (function(){
+            const cursor = document.getElementById('cursor');
+            let mx=0,my=0,cx=0,cy=0;
+            document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+            (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;if(cursor)cursor.style.transform=`translate3d(${cx}px,${cy}px,0)`;requestAnimationFrame(loop);})();
+            document.querySelectorAll('a,button').forEach(el=>{
+                el.addEventListener('mouseenter',()=>cursor?.classList.add('cursor--hover'),{passive:true});
+                el.addEventListener('mouseleave',()=>cursor?.classList.remove('cursor--hover'),{passive:true});
+            });
+        })();
+    </script>
 </body>
 </html>
